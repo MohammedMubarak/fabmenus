@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Point
+import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.os.Handler
 import android.util.AttributeSet
@@ -18,6 +19,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.*
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.core.widget.TextViewCompat
@@ -652,6 +654,27 @@ open class AdvancedFabMenu @JvmOverloads constructor(
 
             nextY =
                 if (openUp) childY - buttonSpacing else childY + child.measuredHeight + buttonSpacing
+        }
+    }
+
+    fun setTypeFace(typeface: Typeface){
+        for (i in buttonCount - 1 downTo 0) {
+            val child = getChildAt(i)
+
+            if (child == imageToggle) continue
+
+            val fab = child as FloatingActionButton
+            if (fab.visibility == View.GONE) continue
+
+            /**
+             * Lays out the labels.
+             */
+
+            val label = fab.getTag(R.id.fab_label) as? Label
+            if (label != null) {
+                (label as TextView).typeface = typeface
+            }
+
         }
     }
 
