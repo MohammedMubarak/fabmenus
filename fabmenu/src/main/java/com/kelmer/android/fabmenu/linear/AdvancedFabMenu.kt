@@ -655,6 +655,27 @@ open class AdvancedFabMenu @JvmOverloads constructor(
         }
     }
 
+    fun setTypeFace(typeface: Typeface){
+        for (i in buttonCount - 1 downTo 0) {
+            val child = getChildAt(i)
+
+            if (child == imageToggle) continue
+
+            val fab = child as FloatingActionButton
+            if (fab.visibility == View.GONE) continue
+
+            /**
+             * Lays out the labels.
+             */
+
+            val label = fab.getTag(R.id.fab_label) as? Label
+            if (label != null) {
+                (label as TextView).typeface = typeface
+            }
+
+        }
+    }
+
 
     private fun radialDimension(widthMeasureSpec: Int, heightMeasureSpec: Int): Dimen {
         val areLabelsToTheLeft = labelsPosition == LABEL_POSITION_LEFT
