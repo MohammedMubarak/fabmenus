@@ -10,7 +10,7 @@
     <color name="fab_shadow_color">#66000000</color>
 
 
-    <color name="fab_label_normal">#FF333333</color>
+    <color name="fab_label_normal">@android:color/transparent</color>
     <color name="fab_label_pressed">#FF444444</color>
     <color name="fab_label_ripple">#66FFFFFF</color>
 
