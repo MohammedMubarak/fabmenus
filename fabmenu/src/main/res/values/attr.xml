@@ -35,8 +35,8 @@
         <attr name="menu_labels_hideAnimation" format="reference" />
         <attr name="menu_labels_colorRipple" format="color" />
         <attr name="menu_labels_position" format="enum">
-            <enum name="left" value="0" />
-            <enum name="right" value="1" />
+            <enum name="start" value="1000" />
+            <enum name="end" value="1001" />
         </attr>
         <attr name="menu_icon" format="reference" />
         <attr name="menu_fab_size" format="enum">

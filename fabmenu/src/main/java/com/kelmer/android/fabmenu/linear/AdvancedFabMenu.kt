@@ -145,7 +145,7 @@ open class AdvancedFabMenu @JvmOverloads constructor(
     private val OVERSHOOT_RATIO = 1f + OVERSHOOT_RATIO_OFFSET
 
     init {
-
+        Log.d("fab menu device layout:",context.resources.getBoolean(R.bool.is_right_to_left).toString())
 
         val a = context.obtainStyledAttributes(attrs, R.styleable.AdvancedFabMenu, 0, 0)
 
@@ -153,8 +153,16 @@ open class AdvancedFabMenu @JvmOverloads constructor(
         clipChildren = false
         clipToPadding = false
 
+        val isRtl = context.resources.getBoolean(R.bool.is_right_to_left)
         labelsPosition =
             a.getInt(R.styleable.AdvancedFabMenu_menu_labels_position, LABEL_POSITION_LEFT)
+        labelsPosition = if(labelsPosition == LABEL_POSITION_START){
+            if(isRtl) LABEL_POSITION_LEFT
+            else LABEL_POSITION_RIGHT
+        }else{
+            if(isRtl) LABEL_POSITION_RIGHT
+            else LABEL_POSITION_LEFT
+        }
         val labelShowAnim =
             if (labelsPosition == LABEL_POSITION_LEFT) R.anim.fab_slide_in_from_right else R.anim.fab_slide_in_from_left
         val labelHideAnim =
@@ -1198,6 +1206,9 @@ open class AdvancedFabMenu @JvmOverloads constructor(
         const val OPEN_UP = 0
         const val OPEN_DOWN = 1
 
+
+        const val LABEL_POSITION_START = 1000
+        const val LABEL_POSITION_END = 1001
 
         const val LABEL_POSITION_LEFT = 0
         const val LABEL_POSITION_RIGHT = 1
